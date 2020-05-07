@@ -72,7 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\app\Murad-Dev\product\18.0.0\dbhomeXE\oci\include;C:\oraclexe\app\oracle\product\11.2.0\server\oci\include;C:\Program Files\PostgreSQL\12\include;C:\Program Files\PostgreSQL\12\include\libpq;C:\Program Files\PostgreSQL\10\include;C:\Program Files\PostgreSQL\10\include\libpq;C:\Program Files\MySQL\include;$(SolutionDir)DBInt-Oracle\oclib\include;$(SolutionDir)SodiumShared;$(SolutionDir)DBInt;$(SolutionDir)DBInt-Postgresql;$(SolutionDir)DBInt-Oracle;$(SolutionDir)DBInt-MySql;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\MySQL\include;$(IncludePath)</IncludePath>
+    <OutDir>$(ProjectDir)$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -82,7 +83,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\app\Murad-Dev\product\18.0.0\dbhomeXE\oci\include;C:\oraclexe\app\oracle\product\11.2.0\server\oci\include;C:\Program Files\PostgreSQL\12\include;C:\Program Files\PostgreSQL\12\include\libpq;C:\Program Files\PostgreSQL\10\include;C:\Program Files\PostgreSQL\10\include\libpq;C:\Program Files\MySQL\include;$(SolutionDir)DBInt-Oracle\oclib\include;$(SolutionDir)SodiumShared;$(SolutionDir)DBInt;$(SolutionDir)DBInt-Postgresql;$(SolutionDir)DBInt-Oracle;$(SolutionDir)DBInt-MySql;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\MySQL\include;$(IncludePath)</IncludePath>
+    <OutDir>$(ProjectDir)$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -98,12 +100,12 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>..\SodiumShared\x64\Debug;$(SolutionDir)$(Platform)\$(Configuration)\;C:\Program Files\MySQL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SodiumShared\x64;$(ProjectDir)$(Platform);C:\Program Files\MySQL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SodiumShared.lib;libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>C:\Program Files\MySQL\lib\libmysql.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\$(Configuration)\DBInt-MySql.dll C:\projects\Sodium\Setup</Command>
+      <Command>copy $(ProjectDir)$(Platform)\DBInt-MySql.dll C:\projects\Sodium\Setup</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -160,10 +162,10 @@
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>SodiumShared.lib;libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DelayLoadDLLs>C:\Program Files\MySQL\lib\libmysql.dll</DelayLoadDLLs>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;C:\Program Files\MySQL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SodiumShared\x64;$(ProjectDir)$(Platform);C:\Program Files\MySQL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\$(Configuration)\DBInt-MySql.dll C:\projects\Sodium\Setup</Command>
+      <Command>copy $(ProjectDir)$(Platform)\DBInt-MySql.dll C:\projects\Sodium\Setup</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
