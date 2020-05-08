@@ -402,7 +402,7 @@ mysqlGetColumnNameByIndex(
 }
 
 MYSQL_INTERFACE_API 
-HTSQL_COLUMN_TYPE	
+SODIUM_DATABASE_COLUMN_TYPE
 mysqlGetColumnType(
 	DBInt_Connection* mkConnection, 
 	DBInt_Statement* stm, 
@@ -413,7 +413,7 @@ mysqlGetColumnType(
 	mkConnection->err = FALSE;
 	
 	MYSQL_FIELD* field;
-	HTSQL_COLUMN_TYPE retVal = HTSQL_COLUMN_TYPE_NOTSET;
+	SODIUM_DATABASE_COLUMN_TYPE retVal = HTSQL_COLUMN_TYPE_NOTSET;
 
 	MYSQL_RES* mysqlres = mysql_stmt_result_metadata(stm->statement.mysql.statement);
 

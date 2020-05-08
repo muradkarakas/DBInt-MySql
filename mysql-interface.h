@@ -43,7 +43,14 @@ MYSQL_INTERFACE_API void					mysqlPrepare(DBInt_Connection* mkConnection, DBInt_
 MYSQL_INTERFACE_API unsigned int			mysqlGetColumnCount(DBInt_Connection* mkConnection, DBInt_Statement* stm);
 MYSQL_INTERFACE_API const char*				mysqlGetColumnValueByColumnName(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName);
 MYSQL_INTERFACE_API void*					mysqlGetLob(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName, DWORD* sizeOfValue);
-MYSQL_INTERFACE_API HTSQL_COLUMN_TYPE		mysqlGetColumnType(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName);
+MYSQL_INTERFACE_API 
+
+SODIUM_DATABASE_COLUMN_TYPE
+mysqlGetColumnType(
+	DBInt_Connection * mkConnection, 
+	DBInt_Statement * stm, 
+	const char * columnName);
+
 MYSQL_INTERFACE_API unsigned int			mysqlGetColumnSize(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName);
 MYSQL_INTERFACE_API const char*				mysqlGetColumnNameByIndex(DBInt_Connection* mkDBConnection, DBInt_Statement* stm, unsigned int index);
 /* Caller must release return value */
