@@ -9,6 +9,29 @@
 
 #include <mysql.h>
 
+MYSQL_INTERFACE_API 
+char * 
+mysqlGetDatabaseName(
+	DBInt_Connection* conn
+)
+{
+	conn->errText = NULL;
+	conn->err = FALSE;
+	char * sql = "SELECT DATABASE() as dbname FROM DUAL";
+	char* retval = NULL;
+
+	DBInt_Statement* stm = mysqlCreateStatement(conn);
+	mysqlPrepare(conn, stm, sql);
+	mysqlExecuteSelectStatement(conn, stm, sql);
+	const char* dbName = mysqlGetColumnValueByColumnName(conn, stm, "dbname");
+	if (dbName) {
+		retval = mkStrdup(conn->heapHandle, dbName, __FILE__, __LINE__);
+	}
+	mysqlFreeStatement(conn, stm);
+
+	return retval;
+}
+
 MYSQL_INTERFACE_API
 void
 mysqlFreeStatement(
@@ -440,6 +463,7 @@ mysqlCommit(
 	DBInt_Statement* stm = mysqlCreateStatement(conn);
 	mysqlPrepare(conn, stm, sql);
 	mysqlExecuteAnonymousBlock(conn, stm, sql);
+	mysqlFreeStatement(conn, stm);
 
 	// starting a new transaction
 	//if (conn->errText == NULL) {
