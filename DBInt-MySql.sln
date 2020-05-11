@@ -5,22 +5,73 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DBInt-MySql", "DBInt-MySql.vcxproj", "{0D0EFB95-1782-4EA8-A6B9-7563743A4811}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SodiumServer", "..\SodiumServer\FastAPI.vcxproj", "{2AB1AF4A-E4A5-4076-A571-0E260139B71B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811} = {0D0EFB95-1782-4EA8-A6B9-7563743A4811}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SodiumExtension", "..\SodiumExtension\htsql.vcxproj", "{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release For Me|x64 = Release For Me|x64
+		Release For Me|x86 = Release For Me|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		ReleaseForMe|x64 = ReleaseForMe|x64
+		ReleaseForMe|x86 = ReleaseForMe|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Debug|x64.ActiveCfg = Debug|x64
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Debug|x64.Build.0 = Debug|x64
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Debug|x86.ActiveCfg = Debug|Win32
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Debug|x86.Build.0 = Debug|Win32
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release For Me|x64.ActiveCfg = Release|x64
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release For Me|x64.Build.0 = Release|x64
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release For Me|x86.ActiveCfg = Release|Win32
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release For Me|x86.Build.0 = Release|Win32
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release|x64.ActiveCfg = Release|x64
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release|x64.Build.0 = Release|x64
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release|x86.ActiveCfg = Release|Win32
 		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.Release|x86.Build.0 = Release|Win32
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.ReleaseForMe|x64.ActiveCfg = Release|x64
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.ReleaseForMe|x64.Build.0 = Release|x64
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.ReleaseForMe|x86.ActiveCfg = Release|Win32
+		{0D0EFB95-1782-4EA8-A6B9-7563743A4811}.ReleaseForMe|x86.Build.0 = Release|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Debug|x64.ActiveCfg = Debug|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Debug|x64.Build.0 = Debug|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Debug|x86.ActiveCfg = Debug|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Debug|x86.Build.0 = Debug|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release For Me|x64.ActiveCfg = Release|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release For Me|x64.Build.0 = Release|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release For Me|x86.ActiveCfg = Release|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release For Me|x86.Build.0 = Release|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release|x64.ActiveCfg = Release|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release|x64.Build.0 = Release|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release|x86.ActiveCfg = Release|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.Release|x86.Build.0 = Release|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.ReleaseForMe|x64.ActiveCfg = Release|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.ReleaseForMe|x64.Build.0 = Release|x64
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.ReleaseForMe|x86.ActiveCfg = Release|Win32
+		{2AB1AF4A-E4A5-4076-A571-0E260139B71B}.ReleaseForMe|x86.Build.0 = Release|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Debug|x64.ActiveCfg = Debug|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Debug|x64.Build.0 = Debug|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Debug|x86.ActiveCfg = Debug|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Debug|x86.Build.0 = Debug|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release For Me|x64.ActiveCfg = Release For Me|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release For Me|x64.Build.0 = Release For Me|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release For Me|x86.ActiveCfg = Release For Me|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release For Me|x86.Build.0 = Release For Me|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release|x64.ActiveCfg = Release|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release|x64.Build.0 = Release|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release|x86.ActiveCfg = Release|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.Release|x86.Build.0 = Release|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.ReleaseForMe|x64.ActiveCfg = ReleaseForMe|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.ReleaseForMe|x64.Build.0 = ReleaseForMe|x64
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.ReleaseForMe|x86.ActiveCfg = ReleaseForMe|Win32
+		{ECC3D2E2-9725-461B-BB74-36791B5F0F8B}.ReleaseForMe|x86.Build.0 = ReleaseForMe|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

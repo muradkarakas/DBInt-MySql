@@ -7,6 +7,13 @@
 
 /* DDL's PRIVATE FUNCTIONS  */
 void									oracleExecuteUpdateInsertStatements(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* sql);
+void									_mysqlBind(
+											DBInt_Connection* mkConnection,
+											DBInt_Statement* stm,
+											enum enum_field_types bufferType,
+											char* bindVariableName,
+											void* bindVariableValue,
+											size_t valueLength);
 
 /* DDL's PUBLIC FUNCTIONS  */
 MYSQL_INTERFACE_API void					mysqlInitConnection(DBInt_Connection* conn);
@@ -42,9 +49,9 @@ MYSQL_INTERFACE_API void					mysqlExecuteAnonymousBlock(DBInt_Connection* mkConn
 MYSQL_INTERFACE_API void					mysqlPrepare(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* sql);
 MYSQL_INTERFACE_API unsigned int			mysqlGetColumnCount(DBInt_Connection* mkConnection, DBInt_Statement* stm);
 MYSQL_INTERFACE_API const char*				mysqlGetColumnValueByColumnName(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName);
-MYSQL_INTERFACE_API void*					mysqlGetLob(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName, DWORD* sizeOfValue);
-MYSQL_INTERFACE_API 
+MYSQL_INTERFACE_API void *					mysqlGetLob(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* columnName, DWORD* sizeOfValue);
 
+MYSQL_INTERFACE_API 
 SODIUM_DATABASE_COLUMN_TYPE
 mysqlGetColumnType(
 	DBInt_Connection * mkConnection, 
