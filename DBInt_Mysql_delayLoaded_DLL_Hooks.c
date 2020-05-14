@@ -15,6 +15,9 @@ FARPROC WINAPI delayedDllFailHook(unsigned dliNotify, PDelayLoadInfo pdli) {
 		case dliFailGetProc: {			
 			if (pdli->dlp.fImportByName) {
 				mkCoreDebug(__FILE__, __LINE__, "\nDBInt_Mysql.dll says: Function not found : ", pdli->dlp.szProcName, NULL);
+				if ((strcmp(pdli->dlp.szProcName, "mysql_server_init") == 0)) {
+					return (FARPROC)DBInt_MySql_mysql_server_init_NotImplemented;
+				}
 			}
 			else {
 				// not needed for oracle

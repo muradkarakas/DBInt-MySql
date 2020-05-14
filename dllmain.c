@@ -13,8 +13,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     {
         case DLL_PROCESS_ATTACH: {
             if (mysql_library_init(0, NULL, NULL)) {
-                fprintf(stderr, "could not initialize MySQL client library\n");
-                exit(1);
+                fprintf(stderr, "Could not initialize MySQL client library\n");
+                exit(103);
             }
             break;
         }
