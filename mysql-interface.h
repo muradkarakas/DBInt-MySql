@@ -6,14 +6,14 @@
 #define MYSQL_INTERFACE_API __declspec(dllexport)
 
 /* DDL's PRIVATE FUNCTIONS  */
-void									oracleExecuteUpdateInsertStatements(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* sql);
-void									_mysqlBind(
-											DBInt_Connection* mkConnection,
-											DBInt_Statement* stm,
-											enum enum_field_types bufferType,
-											char* bindVariableName,
-											void* bindVariableValue,
-											size_t valueLength);
+void										oracleExecuteUpdateInsertStatements(DBInt_Connection* mkConnection, DBInt_Statement* stm, const char* sql);
+void										_mysqlBind(
+												DBInt_Connection* mkConnection,
+												DBInt_Statement* stm,
+												enum enum_field_types bufferType,
+												char* bindVariableName,
+												void* bindVariableValue,
+												size_t valueLength);
 
 /* DDL's PUBLIC FUNCTIONS  */
 MYSQL_INTERFACE_API void					mysqlInitConnection(DBInt_Connection* conn);
