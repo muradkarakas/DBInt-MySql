@@ -124,9 +124,9 @@ mysqlExecuteSelectStatement(
 					stm->statement.mysql.rs[i].buffer_type = MYSQL_TYPE_LONG;
 					stm->statement.mysql.rs[i].buffer = mkMalloc(conn->heapHandle, 60, __FILE__, __LINE__);
 					stm->statement.mysql.rs[i].buffer_length = 60;
-					stm->statement.mysql.rs[i].is_null = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+					stm->statement.mysql.rs[i].is_null = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 					stm->statement.mysql.rs[i].length = mkMalloc(conn->heapHandle, 60, __FILE__, __LINE__);
-					stm->statement.mysql.rs[i].error = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+					stm->statement.mysql.rs[i].error = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 					stm->statement.mysql.rs[i].is_unsigned = FALSE;
 					break;
 				}
@@ -136,9 +136,9 @@ mysqlExecuteSelectStatement(
 					stm->statement.mysql.rs[i].buffer_type = MYSQL_TYPE_STRING;
 					stm->statement.mysql.rs[i].buffer = mkMalloc(conn->heapHandle, len, __FILE__, __LINE__);
 					stm->statement.mysql.rs[i].buffer_length = len;
-					stm->statement.mysql.rs[i].is_null = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+					stm->statement.mysql.rs[i].is_null = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 					stm->statement.mysql.rs[i].length = mkMalloc(conn->heapHandle, 60, __FILE__, __LINE__);
-					stm->statement.mysql.rs[i].error = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+					stm->statement.mysql.rs[i].error = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 					break;
 				}
 				case MYSQL_TYPE_BLOB: {
@@ -146,9 +146,9 @@ mysqlExecuteSelectStatement(
 					stm->statement.mysql.rs[i].buffer_type = MYSQL_TYPE_BLOB;
 					stm->statement.mysql.rs[i].buffer_length = 0;
 					stm->statement.mysql.rs[i].buffer = NULL;//  mkMalloc(conn->heapHandle, len, __FILE__, __LINE__);
-					stm->statement.mysql.rs[i].is_null = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+					stm->statement.mysql.rs[i].is_null = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 					stm->statement.mysql.rs[i].length = mkMalloc(conn->heapHandle, 60, __FILE__, __LINE__);
-					stm->statement.mysql.rs[i].error = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+					stm->statement.mysql.rs[i].error = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 					break;
 				}
 				default: {
@@ -164,7 +164,7 @@ mysqlExecuteSelectStatement(
 
 		if (fieldCount > 0) {
 
-			bool res = mysql_stmt_bind_result(stm->statement.mysql.statement, stm->statement.mysql.rs);
+			BOOL res = mysql_stmt_bind_result(stm->statement.mysql.statement, stm->statement.mysql.rs);
 			if (res == FALSE) {
 
 				int status = mysql_stmt_store_result(stm->statement.mysql.statement);
@@ -342,7 +342,7 @@ mysqlExecuteInsertStatement(
 	char* retval = mkMalloc(conn->heapHandle, 15, __FILE__, __LINE__);
 
 	if (stm->statement.mysql.paramCount > 0) {
-		bool res = mysql_stmt_bind_param(stm->statement.mysql.statement, stm->statement.mysql.bindVariables);
+		BOOL res = mysql_stmt_bind_param(stm->statement.mysql.statement, stm->statement.mysql.bindVariables);
 		if (res == FALSE) {
 			
 		}
@@ -355,7 +355,7 @@ mysqlExecuteInsertStatement(
 	if (conn->err == FALSE) {
 		int result = mysql_stmt_execute(stm->statement.mysql.statement);
 		if (result == 0) {
-			uint64_t rowCount = mysql_stmt_affected_rows(stm->statement.mysql.statement);
+			unsigned long long rowCount = mysql_stmt_affected_rows(stm->statement.mysql.statement);
 			mkItoa(rowCount, retval);
 		}
 		else {
@@ -391,7 +391,7 @@ _mysqlBind(
 	}
 
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer_length = (unsigned long)valueLength;
-	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 	*(stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null) = FALSE;
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].length = mkMalloc(conn->heapHandle, sizeof(unsigned long), __FILE__, __LINE__);
 	*(stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].length) = (unsigned long)valueLength;
@@ -424,7 +424,7 @@ mysqlBindString(
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer = mkMalloc(conn->heapHandle, valueLength, __FILE__, __LINE__);
 	memcpy_s((char*)stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer, valueLength, bindVariableValue, strlen(bindVariableValue));
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer_length = (unsigned long) valueLength;
-	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 	*(stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null) = FALSE;
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].length = mkMalloc(conn->heapHandle, sizeof(unsigned long), __FILE__, __LINE__);
 	*(stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].length) = (unsigned long) valueLength;
@@ -457,7 +457,7 @@ mysqlBindNumber(
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer = mkMalloc(conn->heapHandle, valueLength, __FILE__, __LINE__);
 	strncpy_s(stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer, valueLength, bindVariableValue, strlen(bindVariableValue));
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].buffer_length = (unsigned long) valueLength;
-	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null = mkMalloc(conn->heapHandle, sizeof(bool), __FILE__, __LINE__);
+	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null = mkMalloc(conn->heapHandle, sizeof(BOOL), __FILE__, __LINE__);
 	*(stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].is_null) = FALSE;
 	stm->statement.mysql.bindVariables[stm->statement.mysql.bindedVariableCount].length = NULL; // length is ignored for numeric and temporal data types because the buffer_type value determines the length of the data value. 
 	stm->statement.mysql.bindedVariableCount++;*/
@@ -523,7 +523,7 @@ mysqlPrepare(
 
 	stm->statement.mysql.statement = mysql_stmt_init(conn->connection.mysqlHandle);
 	if (stm->statement.mysql.statement) {
-		bool flag = 1;
+		BOOL flag = 1;
 		int res = mysql_stmt_attr_set(stm->statement.mysql.statement, STMT_ATTR_UPDATE_MAX_LENGTH, &flag);
 		if (res == TRUE) {
 			conn->err = TRUE;
@@ -918,7 +918,7 @@ mysqlNext(
 		//conn->errText = mysql_stmt_error(stm->statement.mysql.statement);
 	}
 	else if (status == MYSQL_NO_DATA) {
-		uint64_t rowCount = mysql_stmt_num_rows(stm->statement.mysql.statement);		
+		unsigned long long rowCount = mysql_stmt_num_rows(stm->statement.mysql.statement);		
 		stm->statement.mysql.eof = TRUE;
 	}
 	else if (status == MYSQL_DATA_TRUNCATED) {
@@ -935,7 +935,7 @@ mysqlIsEof(
 	DBInt_Statement* stm
 )
 {
-	uint64_t rowCount = mysql_stmt_num_rows(stm->statement.mysql.statement);
+	unsigned long long rowCount = mysql_stmt_num_rows(stm->statement.mysql.statement);
 	return stm->statement.mysql.eof;
 }
 
